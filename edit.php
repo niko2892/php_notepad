@@ -1,11 +1,11 @@
 <?php
-//Использую класс PDO для работы с БД
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');//Подключаю БД
-$sql = "SELECT * FROM tasks WHERE id=:id"; // формирую запрос для БД
-$statement = $pdo->prepare($sql); //Подготавливаю запрос
-$statement->bindParam(":id", $_GET["id"]);
-$statement->execute(); // Выполняю запрос  
-$task = $statement->fetch(PDO::FETCH_ASSOC); //Записываю в массив tasks данные из БД в виде ассоциативного массива
+require 'database/querybuilder.php'; //подключаю файл с клиентом
+
+$db = new QueryBuilder;
+
+$id = $_GET["id"];
+
+$task = $db->getTask($id);
 
 ?>
 

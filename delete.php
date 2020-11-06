@@ -1,11 +1,12 @@
 <?php
+require 'database/querybuilder.php'; //подключаю файл с клиентом
+
+$db = new QueryBuilder;
+
 $id = $_GET['id'];
 
-$sql = "DELETE FROM tasks WHERE id=:id";
-$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "root");
-$statement = $pdo->prepare($sql);
-$statement->bindParam(":id", $id);
-$statement->execute();
-header("Location: /php_practice/"); 
+$db->deleteTask($id);
+
+header("Location: /php_practice/"); exit; 
 
 ?>

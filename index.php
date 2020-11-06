@@ -1,12 +1,9 @@
 <?php 
+require 'database/querybuilder.php'; //подключаю файл с клиентом
 
-//Использую класс PDO для работы с БД
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');//Подключаю БД
-$sql = "SELECT * FROM tasks"; // формирую запрос для БД
-$statement = $pdo->prepare($sql); //Подготавливаю запрос
-$statement->execute(); // Выполняю запрос  
-$tasks = $statement->fetchAll(PDO::FETCH_ASSOC); //Записываю в массив tasks данные из БД в виде ассоциативного массива
+$db = new QueryBuilder;
 
+$tasks = $db->getAllTasks();
 ?>
 
 <!DOCTYPE html>
