@@ -3,7 +3,7 @@ require 'database/querybuilder.php'; //подключаю файл с клиен
 
 $db = new QueryBuilder;
 
-$tasks = $db->getAllTasks();
+$tasks = $db->all("tasks"); //получаю все записи из таблицы tasks
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,11 @@ $tasks = $db->getAllTasks();
                 <a href="create.php" class="btn btn-success">Add task</a>
                 <table class="table">
                     <thead>
-                        <tr>ID</tr>
-                        <tr>Title</tr>
-                        <tr>Actions</tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Actions</th>
+                        </tr>
                     </thead>
 
                     <tbody>

@@ -2,8 +2,9 @@
 require 'database/querybuilder.php'; //подключаю файл с клиентом
 
 $db = new QueryBuilder;
+$id = $_GET["id"];
 
-$task = $db->getTask($_GET["id"]);
+$task = $db->findById("tasks", $id);
 ?>
 
 <!DOCTYPE html>
